@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 import sys
 
-fasta = sys.argv[1]  # input a fasta file
-target_ids = sys.argv[2:]  # input one or many want to extracted fasta IDs
+fa = sys.argv[1]  # input a fasta file
+ids = sys.argv[2:]  # input one or many fasta ids
 
-with open(fasta) as f:
+with open(fa) as f:
     at_body = False
     for line in f:
         if line.startswith('>'):  # header line
             header = line.split()[0][1:]
-            if header not in target_ids:
+            if header not in ids:
                 at_body = False
                 continue
             print(line, end='')
